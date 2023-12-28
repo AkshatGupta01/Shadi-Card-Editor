@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useContext } from "react";
+import { fontContext, sizeContext, colorContext, textContext } from "../context/MyContexts";
 
 const Controls = () => {
-    const [font, setFont] = useState("Arial");
-    const [size, setSize] = useState(14);
-    const [color, setColor] = useState("#000000");
-    const [text, setText] = useState("");
+    const {font, setFont} = useContext(fontContext);
+    const {size, setSize} = useContext(sizeContext);
+    const {color, setColor} = useContext(colorContext);
+    const {text, setText} = useContext(textContext);
 
+    console.log({font, size, color, text});
     return (
         <div className="shadow-2xl rounded p-4 border border-black inline-block">
             <div className="w-full flex justify-between p-4 items-center">
@@ -30,7 +32,7 @@ const Controls = () => {
 
             <div className="w-full p-4">
                 <label className="block">Add Text:</label>
-                <textarea className="border-2 border-cyan-950 rounded outline-none w-full h-36" value={text} 
+                <textarea className="border-2 border-cyan-950 rounded outline-none w-full h-36 p-2" value={text} 
                 onChange={(e) => {
                     setText(e.target.value);
                 }} 
